@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="page" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css"/>
+  <script defer src="script.js"></script>
+  <title>Test TKB</title>
+</head>
+<body class="page__body body">
+
+    <nav class="main-nav">
+      <h2 class="main-nav__title">Меню</h2>
+
+      <ul class="main-nav__list">
+        <li class="main-nav__item">
+          <a class="main-nav__link" href="#">Пункт 1</a>
+        </li>
+        <li class="main-nav__item">
+          <a class="main-nav__link" href="#">Пункт 2</a>
+        </li>
+        <li class="main-nav__item">
+          <a class="main-nav__link" href="#">Пункт 3</a>
+        </li>
+        <li class="main-nav__item">
+          <a class="main-nav__link" href="#">Пункт 4</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="content-wrapper">
+      <header class="main-header">
+        <label class="visually-hidden" for="search">Поиск</label>
+        <input class="main-header__input" type="search" id="search" placeholder="Поиск"/>
+      </header>
+
+      <main class="main-content">
+        <h2 class="visually-hidden">Таблица с данными</h2>
+        <div class="main-content__wrapper">
+
+          <table class="data-table main-content__data-table">
+            <thead>
+              <tr class="data-table__header-row">
+                <th>ФИО</th>
+                <th>Должность</th>
+                <th>Возраст</th>
+                <th>Компетенции</th>
+                <th>Кнопка удаления</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="data-table__body-row" id="0-row">
+                <td>Иванов Иван Иванович</td>
+                <td>Аналитик</td>
+                <td>25</td>
+                <td>Ляляля, ляляля, ляляля</td>
+                <td><button class="remove-data-button" type="button">Del</button></td>
+              </tr>
+              <tr class="data-table__body-row" id="1-row">
+                <td>Николай</td>
+                <td>Аналитик</td>
+                <td>25</td>
+                <td>Ляляля, ляляля, ляляля</td>
+                <td><button class="remove-data-button" type="button">Del</button></td>
+              </tr>
+              <tr class="data-table__body-row" id="2-row">
+                <td>Алексей</td>
+                <td>Аналитик</td>
+                <td>25</td>
+                <td>Ляляля, ляляля, ляляля</td>
+                <td><button class="remove-data-button" type="button">Del</button></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="action-buttons main_content__action-buttons">
+            <button class="action-button action-button--post" type="button">Отправить</button>
+            <button class="action-button action-button--add" type="button">Добавить</button>
+          </div>
+
+        </div>
+      </main>
+
+      <footer>
+        Footer
+      </footer>
+
+    </div>
+
+
+    <template id="new-row">
+      <tr class="data-table__body-row data-table__body-row--new">
+        <td>
+          <label for="name"></label>
+          <input type="text" id="name" name="name" autocomplete="off" required>
+        </td>
+        <td>
+          <label for="job-title"></label>
+          <select name="job-title" id="job-title" required>
+            <option value="">--Выберите должность--</option>
+            <option value="analyst">аналитик</option>
+            <option value="manager">менеджер</option>
+            <option value="programmer">программист</option>
+            <option value="lawyer">юрист</option>
+          </select>
+        </td>
+        <td>
+          <label for="age"></label>
+          <input type="number" id="age" required>
+        </td>
+        <td>
+          <label for="competencies"></label>
+          <textarea id="competencies" required></textarea>
+        </td>
+        <td>
+          <button class="save-data-button" type="button">Save</button>
+        </td>
+      </tr>
+    </template>
+
+
+
+</body>
+</html>
