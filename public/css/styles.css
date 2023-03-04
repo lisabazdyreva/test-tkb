@@ -1,0 +1,425 @@
+/*TODO подключить нормалайз*/
+
+:root {
+    --menu-bg-color: #152238;
+    --menu-text-color: #FFFFFF;
+    --menu-separator-color: #FFFFFF;
+
+    --table-border-color: #1C2E4A;
+    --table-row-accent-color: #E2EAEC;
+    --table-row-hover-color: #C0CAD6;
+    --table-title-color: #203354;
+    --table-text-color: #152238;
+
+
+    --input-border-color: #203354;
+    --input-focus-color: #1167b1;
+
+    --button-green-bg-color: #265828;
+    --button-green-text-color: #FFFFFF;
+    --button-green-hover-color: #173518;
+
+    --button-blue-bg-color: #1167B1;
+    --button-blue-text-color: #FFFFFF;
+    --button-blue-hover-color: #03254C;
+
+    --button-red-bg-color: #8A0303;
+    --button-red-hover-color: #6C0000;
+    --button-red-text-color: #000000; /*TODO дать осознанные имена*/
+
+    /*--menu-link-color: #000000;*/
+
+    --footer-bg-color: #23395D;
+    --footer-text-color: #FFFFFF;
+}
+
+@font-face {
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("../fonts/nunito-sans-400.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Nunito Sans";
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url("../fonts/nunito-sans-600.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("../fonts/nunito-sans-700.woff2") format("woff2");
+}
+
+
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+}
+
+.page {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    height: 100%;
+    font-family: "Nunito Sans", "Arial", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.page__body {
+    margin: 0;
+}
+
+.body {
+    display: grid;
+    height: 100%;
+}
+
+.body--nav-open {
+    grid-template-columns: 20% 80%;
+}
+
+/*
+    nav
+*/
+
+.main-nav {
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
+}
+
+.main-nav--close {
+    display: none; /*TODO доступность*/
+}
+
+.main-nav .main-nav__title {
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid var(--menu-separator-color);
+}
+
+.main-nav .main-nav__list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.main-nav .main-nav__link {
+    color: var(--menu-text-color);
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    align-items: start;
+    min-height: 100%;
+}
+
+
+/*
+    header
+*/
+
+.body__header {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 20px 0;
+}
+
+.body--nav-open .header__menu-button .menu-icon {
+    display: none;
+}
+
+.body:not(.body--nav-open) .header__menu-button .menu-icon {
+    display: inline-block;
+}
+
+.body:not(.body--nav-open) .header__menu-button .menu-icon--close {
+    display: none;
+}
+
+.header .header__menu-button {
+    max-width: 100px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .search-wrapper {
+    position: relative;
+    width: 300px;
+}
+
+.header .header__search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    border: 2px solid var(--input-border-color);
+    min-height: 40px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.header .header__search:focus-within {
+    border-color: var(--input-focus-color);
+}
+
+.header .header__search-input {
+    /*padding: 10px;*/
+    /*min-width: 300px;*/
+    /*max-width: 500px;*/
+    border: none;
+    width: 100%;
+    padding: 0 40px 0 0;
+    outline: none;
+    /*line-height: 20px;*/
+    /*border-radius: 10px;*/
+}
+
+.header .header__search-icon {
+    margin: 0 10px;
+}
+
+.header .header__cancel-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.header .header__search-icon {
+    width: 20px;
+    height: 22px;
+}
+
+
+/*main */
+.body__main {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.main {
+    /*background-color: aquamarine;*/
+}
+
+
+/*
+    data table
+*/
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table .data-table__header-row th {
+    text-align: left;
+    padding: 20px 10px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: var(--table-title-color);
+}
+
+.data-table .data-table__body-row td {
+    padding: 10px;
+    line-height: 20px;
+    color: var(--table-text-color);
+}
+
+.data-table .data-table__body-row:nth-child(2n + 2) {
+    background-color: var(--table-row-accent-color);
+}
+
+.data-table .data-table__body-row:hover {
+    background-color: var(--table-row-hover-color);
+}
+
+.data-table .data-table__body-row--new:hover {
+    background-color: transparent;
+}
+
+.data-table .data-table__header-row {
+    border-bottom: 3px solid var(--table-border-color);
+}
+
+
+.data-table .data-table__body-row {
+    border-bottom: 1px solid var(--table-border-color);
+}
+
+
+.remove-data-button {
+    background-color: var(--button-red-bg-color);
+    color: var(--button-red-text-color);
+    border-radius: 2px;
+    padding: 5px 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.remove-data-button:hover {
+    background-color: var(--button-red-hover-color);
+}
+
+
+/*
+   action buttons
+*/
+
+.action-button {
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.action-button--add {
+    background-color: var(--button-green-bg-color);
+    color: var(--button-green-text-color);
+}
+
+.action-button--add:hover {
+    background-color: var(--button-green-hover-color);
+}
+
+.action-button--post {
+    background-color: var(--button-blue-bg-color);
+    color: var(--button-blue-text-color);
+}
+
+.action-button--post:hover {
+    background-color: var(--button-blue-hover-color);
+}
+
+.main_content__action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.body__footer {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+}
+
+@media screen and (max-width: 400px) {
+    .header {
+        display: none;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .action-buttons {
+        display: none;
+    }
+
+    .data-table-wrapper {
+        /*margin: 0 auto;*/
+        /*display: grid;*/
+        /*grid-template-columns: repeat(1, minmax(0, 1fr));*/
+        overflow-x: auto;
+        /*white-space: nowrap;*/
+
+    }
+    .data-table {
+        /*display: block;*/
+        width: 100%;
+        /*width: 700px;*/
+        /*table-layout: fixed;*/
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .data-table .data-table__header-row th {
+        padding: 10px 5px;
+    }
+    .data-table .data-table__body-row td {
+        font-size: 14px;
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .body__header {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .header .header__search-input {
+        min-width: 100px;
+    }
+    .body__main {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .data-table .data-table__header-row th {
+        text-transform: none;
+    }
+}
+
+
+@media screen and (min-width: 769px) {
+    .data-table .data-table__header-row .job-title-cell {
+        width: 200px;
+    }
+
+    .data-table .data-table__header-row .age-cell {
+        width: 100px;
+    }
+
+    .data-table .data-table__header-row .button-cell {
+        width: 50px;
+    }
+}

@@ -53,10 +53,23 @@ newRow.querySelector('#competencies').addEventListener('input', (evt) => {
   }
 });
 
-
-
-
+const buttonCancel = document.createElement('button');
+buttonCancel.type = 'button';
+buttonCancel.classList.add('action-button');
+buttonCancel.classList.add('action-button--cancel');
+buttonCancel.innerText = 'Отменить';
 //1. Добавлять новую строку, если не открыта уже строка
+
+
+buttonCancel.addEventListener('click', () => {
+  newRow.remove();
+  addDataButton.disabled = false;
+  postDataButton.disabled = false;
+  addDataButton.style.display = 'inline-block';
+
+  buttonCancel.remove();
+});
+
 
 addDataButton.addEventListener('click', () => {
   addDataButton.disabled = true;
@@ -70,6 +83,9 @@ addDataButton.addEventListener('click', () => {
   newRow.querySelector('.save-data-button').disabled = true;
   // обработчики ввода
 
+
+  addDataButton.parentNode.append(buttonCancel)
+  addDataButton.style.display = 'none';
 });
 
 
@@ -119,13 +135,13 @@ newRow.querySelector('.save-data-button').addEventListener('click', () => {
 //3. По кнопке удалять строку
 removeButtons.forEach((removeButton) => {
   removeButton.addEventListener('click', (evt) => {
-    const rowToRemove = evt.target.parentNode.parentNode;
+    const rowToRemove = evt.currentTarget.parentNode.parentNode;
 
     if (rowToRemove) {
       rowToRemove.remove();
     }
   });
-})
+});
 
 
 //5. Отправить джейсон с полями
@@ -149,4 +165,23 @@ postDataButton.addEventListener('click', () => {
   const jsonData = JSON.stringify(dataObject);
 
   console.log(jsonData);
+});
+
+
+let isMenuOpen = true;
+
+const buttonMenuOpen = document.querySelector('.header__menu-button');
+const mainNav = document.querySelector('.main-nav'); //--close
+
+buttonMenuOpen.addEventListener('click', () => {
+  isMenuOpen = !isMenuOpen;
+
+  if (isMenuOpen) {
+    mainNav.classList.remove('main-nav--close');
+    document.body.classList.add('body--nav-open');
+  } else {
+    mainNav.classList.add('main-nav--close');
+    document.body.classList.remove('body--nav-open');
+  }
+
 });
