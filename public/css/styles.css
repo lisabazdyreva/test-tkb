@@ -1,6 +1,10 @@
 /*TODO подключить нормалайз*/
 
 :root {
+
+    --disabled-text-color: #EDEDED;
+    --disabled-bg-color: #D0D0D0;
+
     --menu-bg-color: #152238;
     --menu-text-color: #FFFFFF;
     --menu-separator-color: #FFFFFF;
@@ -11,21 +15,25 @@
     --table-title-color: #203354;
     --table-text-color: #152238;
 
-
     --input-border-color: #203354;
-    --input-focus-color: #1167b1;
+    --focus-color: #041bb5;
 
     --button-green-bg-color: #265828;
     --button-green-text-color: #FFFFFF;
-    --button-green-hover-color: #173518;
+    --button-green-hover-color: #1f4720;
+    --button-green-active-color: #173518;
+    /*--button-green-disabled-color: #5E716A;*/
 
     --button-blue-bg-color: #1167B1;
     --button-blue-text-color: #FFFFFF;
-    --button-blue-hover-color: #03254C;
+    --button-blue-hover-color: #043063;
+    --button-blue-active-color: #03254C;
+    /*--button-blue-disabled-color: ;!*#394D6D*!*/
 
     --button-red-bg-color: #8A0303;
-    --button-red-hover-color: #6C0000;
-    --button-red-text-color: #000000; /*TODO дать осознанные имена*/
+    --button-red-hover-color: #7d0101;
+    --button-red-active-color: #6C0000;
+    --button-red-text-color: #FFFFFF; /*TODO дать осознанные имена*/
 
     /*--menu-link-color: #000000;*/
 
@@ -56,8 +64,6 @@
     font-display: swap;
     src: url("../fonts/nunito-sans-700.woff2") format("woff2");
 }
-
-
 
 .visually-hidden {
     position: absolute;
@@ -113,19 +119,19 @@
 .main-nav .main-nav__title {
     margin: 0;
     padding: 20px;
-    border-bottom: 1px solid var(--menu-separator-color);
+    border-bottom: 2px solid var(--menu-separator-color);
 }
 
 .main-nav .main-nav__list {
     list-style: none;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .main-nav .main-nav__link {
     color: var(--menu-text-color);
     text-decoration: none;
     display: inline-block;
-    padding: 10px 0;
+    padding: 10px;
 }
 
 .content-wrapper {
@@ -147,7 +153,8 @@
 
 .header {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 10% 50%;
+    justify-content: space-between;
     padding: 20px 0;
 }
 
@@ -177,7 +184,10 @@
 
 .header .search-wrapper {
     position: relative;
-    width: 300px;
+    justify-self: end;
+    /*width: 300px;*/
+    width: 100%;
+    max-width: 800px;
 }
 
 .header .header__search {
@@ -192,7 +202,7 @@
 }
 
 .header .header__search:focus-within {
-    border-color: var(--input-focus-color);
+    border-color: var(--focus-color);
 }
 
 .header .header__search-input {
@@ -203,6 +213,7 @@
     width: 100%;
     padding: 0 40px 0 0;
     outline: none;
+    font-family: inherit;
     /*line-height: 20px;*/
     /*border-radius: 10px;*/
 }
@@ -255,19 +266,23 @@
 
 .data-table .data-table__header-row th {
     text-align: left;
-    padding: 20px 10px;
+    padding: 25px 10px;
     line-height: 20px;
     text-transform: uppercase;
     color: var(--table-title-color);
 }
 
 .data-table .data-table__body-row td {
-    padding: 10px;
+    padding: 15px;
     line-height: 20px;
     color: var(--table-text-color);
 }
 
-.data-table .data-table__body-row:nth-child(2n + 2) {
+.data-table .data-table__body-row td:last-child {
+    text-align: end;
+}
+
+.data-table__body-row:nth-child(2n + 2) {
     background-color: var(--table-row-accent-color);
 }
 
@@ -276,18 +291,16 @@
 }
 
 .data-table .data-table__body-row--new:hover {
-    background-color: transparent;
+    background-color: #FFFFFF;
 }
 
 .data-table .data-table__header-row {
     border-bottom: 3px solid var(--table-border-color);
 }
 
-
 .data-table .data-table__body-row {
     border-bottom: 1px solid var(--table-border-color);
 }
-
 
 .remove-data-button {
     background-color: var(--button-red-bg-color);
@@ -298,8 +311,16 @@
     cursor: pointer;
 }
 
+.remove-data-button:focus {
+    outline: 2px solid var(--focus-color);
+}
+
 .remove-data-button:hover {
     background-color: var(--button-red-hover-color);
+}
+
+.remove-data-button__icon {
+    display: block;
 }
 
 
@@ -308,6 +329,7 @@
 */
 
 .action-button {
+    font-family: inherit;
     font-weight: 700;
     padding: 10px 20px;
     border: none;
@@ -320,8 +342,17 @@
     color: var(--button-green-text-color);
 }
 
+.action-button--add:focus-visible {
+    background-color: var(--button-green-active-color);
+    outline: 2px solid var(--focus-color);
+}
+
 .action-button--add:hover {
     background-color: var(--button-green-hover-color);
+}
+
+.action-button--add:active {
+    background-color: var(--button-green-active-color);
 }
 
 .action-button--post {
@@ -329,8 +360,40 @@
     color: var(--button-blue-text-color);
 }
 
+.action-button--post:focus-visible {
+    background-color: var(--button-blue-active-color);
+    outline: 2px solid var(--focus-color);
+}
+
 .action-button--post:hover {
     background-color: var(--button-blue-hover-color);
+}
+
+.action-button--post:active {
+    background-color: var(--button-blue-active-color);
+}
+
+.action-button--post:disabled {
+    background-color: var(--disabled-bg-color);
+    color: var(--disabled-text-color);
+    cursor: default;
+}
+
+.action-button--cancel {
+    background-color: var(--button-red-bg-color);
+    color: var(--button-red-text-color);
+} /*TODO нужен ли здесь disabled пока переключается при медленном инете*/
+
+.action-button--cancel:focus-visible {
+    outline: 2px solid var(--focus-color);
+}
+
+.action-button--cancel:hover {
+    background-color: var(--button-red-hover-color);
+}
+
+.action-button--cancel:active {
+    background-color: var(--button-red-active-color);
 }
 
 .main_content__action-buttons {
@@ -338,7 +401,6 @@
     display: flex;
     justify-content: space-between;
 }
-
 
 .body__footer {
     padding-left: 50px;
@@ -411,6 +473,10 @@
 
 
 @media screen and (min-width: 769px) {
+    .data-table .data-table__header-row .name-cell {
+        width: 400px;
+    }
+
     .data-table .data-table__header-row .job-title-cell {
         width: 200px;
     }
@@ -422,4 +488,108 @@
     .data-table .data-table__header-row .button-cell {
         width: 50px;
     }
+}
+
+
+.data-table .data-table__body-row--new {
+    background-color: #ffffff;
+}
+
+.data-table .data-table__body-row--new td {
+    padding: 20px 0;
+}
+
+.data-table__input {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.data-table__input::placeholder {
+    font-size: 14px;
+}
+
+.data-table__input:focus {
+    outline: none;
+    border-color: var(--focus-color);
+}
+
+.data-table__input--small {
+    padding: 10px 5px;
+    width: 55px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+.data-table__select {
+    width: 90%;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+
+.data-table__select:focus {
+    outline: none;
+    border-color: var(--focus-color);
+}
+
+.data-table__option {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.data-table__textarea {
+    resize: none;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    width: 90%;
+    box-sizing: border-box;
+    height: 72px;
+}
+
+.data-table__textarea:focus {
+    border-color: var(--focus-color);
+    outline: none;
+}
+
+.save-data-button {
+    font-family: inherit;
+    border: none;
+    background-color: var(--button-green-bg-color);
+    color: var(--button-green-text-color);
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.save-data-button:disabled {
+    background-color: var(--disabled-bg-color);
+    color: var(--disabled-text-color);
+    cursor: default;
 }

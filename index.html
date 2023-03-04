@@ -86,7 +86,7 @@
           <table class="data-table main-content__data-table">
             <thead>
               <tr class="data-table__header-row">
-                <th>ФИО</th>
+                <th class="name-cell">ФИО</th>
                 <th class="job-title-cell">Должность</th>
                 <th class="age-cell">Возраст</th>
                 <th>Компетенции</th>
@@ -102,7 +102,7 @@
                 <td>
                   <button class="remove-data-button" type="button" title="Удалить">
                     <span class="visually-hidden">Удалить сотрудника</span>
-                    <svg width="10" height="10" aria-hidden="true">
+                    <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
                       <use xlink:href="#remove-icon"></use>
                     </svg>
                   </button>
@@ -116,7 +116,7 @@
                 <td>
                   <button class="remove-data-button" type="button" title="Удалить">
                     <span class="visually-hidden">Удалить сотрудника</span>
-                    <svg width="10" height="10" aria-hidden="true">
+                    <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
                       <use xlink:href="#remove-icon"></use>
                     </svg>
                 </button>
@@ -130,7 +130,7 @@
                 <td>
                   <button class="remove-data-button" type="button" title="Удалить">
                     <span class="visually-hidden">Удалить сотрудника</span>
-                    <svg width="10" height="10" aria-hidden="true">
+                    <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
                       <use xlink:href="#remove-icon"></use>
                     </svg>
                   </button>
@@ -144,7 +144,21 @@
                 <td>
                   <button class="remove-data-button" type="button" title="Удалить">
                     <span class="visually-hidden">Удалить сотрудника</span>
-                    <svg width="10" height="10" aria-hidden="true">
+                    <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                      <use xlink:href="#remove-icon"></use>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr class="data-table__body-row" id="4-row">
+                <td>Алексей</td>
+                <td>Аналитик</td>
+                <td>25</td>
+                <td>Ляляля, ляляля, ляляля</td>
+                <td>
+                  <button class="remove-data-button" type="button" title="Удалить">
+                    <span class="visually-hidden">Удалить сотрудника</span>
+                    <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
                       <use xlink:href="#remove-icon"></use>
                     </svg>
                   </button>
@@ -168,29 +182,29 @@
     <template id="new-row">
       <tr class="data-table__body-row data-table__body-row--new">
         <td>
-          <label for="name"></label>
-          <input type="text" id="name" name="name" autocomplete="off" required>
+          <label class="visually-hidden" for="name">Фамилия, имя, отчество</label>
+          <input class="data-table__input" type="text" id="name" name="name" autocomplete="off" placeholder="Фамилия, имя, отчество" required>
         </td>
         <td>
-          <label for="job-title"></label>
-          <select name="job-title" id="job-title" required>
-            <option value="">--Выберите должность--</option>
-            <option value="analyst">аналитик</option>
-            <option value="manager">менеджер</option>
-            <option value="programmer">программист</option>
-            <option value="lawyer">юрист</option>
+          <label class="visually-hidden" for="job-title">Название должность</label>
+          <select class="data-table__select" name="job-title" id="job-title" required>
+            <option class="data-table__option" value="">--Должность--</option>
+            <option class="data-table__option" value="analyst">аналитик</option>
+            <option class="data-table__option" value="manager">менеджер</option>
+            <option class="data-table__option" value="programmer">программист</option>
+            <option class="data-table__option" value="lawyer">юрист</option>
           </select>
         </td>
         <td>
-          <label for="age"></label>
-          <input type="number" id="age" required>
+          <label class="visually-hidden" for="age">Возраст</label>
+          <input class="data-table__input data-table__input--small" type="number" placeholder="Число" id="age" required>
         </td>
         <td>
-          <label for="competencies"></label>
-          <textarea id="competencies" required></textarea>
+          <label class="visually-hidden" for="competencies">Задачи, компетенции</label>
+          <textarea class="data-table__textarea" id="competencies" required></textarea>
         </td>
         <td>
-          <button class="save-data-button" type="button">Save</button>
+          <button class="save-data-button" type="button">Сохранить</button>
         </td>
       </tr>
     </template>

@@ -89,7 +89,13 @@ addDataButton.addEventListener('click', () => {
 });
 
 
-
+const removeRowButton =
+  `<button class="remove-data-button" type="button" title="Удалить">
+    <span class="visually-hidden">Удалить сотрудника</span>
+    <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+      <use xlink:href="#remove-icon"></use>
+    </svg>
+  </button>`;
 //4. По кнопке добавить строку в таблицу
 newRow.querySelector('.save-data-button').addEventListener('click', () => {
   const name = newRow.querySelector('#name').value;
@@ -112,7 +118,8 @@ newRow.querySelector('.save-data-button').addEventListener('click', () => {
   newRow.remove();
 
   const tdRemoveButton = document.createElement('td');
-  tdRemoveButton.innerHTML = `<button class="remove-data-button" type="button">Del</button>`;
+  tdRemoveButton.innerHTML = removeRowButton;
+  // TODO навесить обработчик на удаление
 
   const trNew = document.createElement('tr');
   trNew.classList.add('data-table__body-row');
@@ -129,6 +136,9 @@ newRow.querySelector('.save-data-button').addEventListener('click', () => {
   dataTable.append(trNew);
   addDataButton.disabled = false;
   postDataButton.disabled = false;
+
+  addDataButton.style.display = 'inline-block';
+  buttonCancel.remove();
 });
 
 
@@ -185,3 +195,6 @@ buttonMenuOpen.addEventListener('click', () => {
   }
 
 });
+
+
+// очистка поля search
