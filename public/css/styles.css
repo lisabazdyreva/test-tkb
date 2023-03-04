@@ -1,17 +1,18 @@
 /*TODO подключить нормалайз*/
-
+/*TODO таблица на переполнение*/
+/*компетенции равны скилам?*/
 :root {
 
     --disabled-text-color: #EDEDED;
     --disabled-bg-color: #D0D0D0;
 
     --menu-bg-color: #152238;
-    --menu-text-color: #FFFFFF;
+    --menu-text-color: #FAFBFC;
     --menu-separator-color: #FFFFFF;
 
-    --table-border-color: #1C2E4A;
-    --table-row-accent-color: #E2EAEC;
-    --table-row-hover-color: #C0CAD6;
+    --table-border-color: #C0CAD6;
+    --table-title-border-color: #1C2E4A;
+    --table-row-hover-color: #D5E1F0;
     --table-title-color: #203354;
     --table-text-color: #152238;
 
@@ -134,6 +135,16 @@
     padding: 10px;
 }
 
+.main-nav .main-nav__link:hover {
+    font-weight: 600;
+}
+
+.main-nav .main-nav__link:focus {
+    outline-width: 2px;
+    outline-color: #FFFFFF;
+    font-weight: 600;
+}
+
 .content-wrapper {
     display: grid;
     grid-template-rows: min-content 1fr min-content;
@@ -164,10 +175,31 @@
 
 .body:not(.body--nav-open) .header__menu-button .menu-icon {
     display: inline-block;
+    stroke: black;
+}
+
+.body:not(.body--nav-open) .header__menu-button:hover .menu-icon {
+    stroke: var(--focus-color);
 }
 
 .body:not(.body--nav-open) .header__menu-button .menu-icon--close {
     display: none;
+}
+
+.header__menu-button:hover {
+    color: var(--focus-color);
+}
+
+.header__menu-button .menu-icon--close {
+    stroke: black;
+}
+
+.header__menu-button:hover .menu-icon--close {
+    stroke: var(--focus-color);
+}
+
+.header__menu-button:focus {
+    outline-color: var(--focus-color);
 }
 
 .header .header__menu-button {
@@ -205,6 +237,9 @@
     border-color: var(--focus-color);
 }
 
+.header .header__search:focus-within .header__search-icon {
+    fill: var(--focus-color);
+}
 .header .header__search-input {
     /*padding: 10px;*/
     /*min-width: 300px;*/
@@ -218,9 +253,6 @@
     /*border-radius: 10px;*/
 }
 
-.header .header__search-icon {
-    margin: 0 10px;
-}
 
 .header .header__cancel-button {
     background: transparent;
@@ -236,13 +268,25 @@
     right: 0;
     border-radius: 10px;
     padding: 0;
+    box-sizing: border-box;
+}
+
+.header .header__cancel-button:focus {
+    outline: none;
+    border: 2px solid var(--focus-color);
+}
+
+.header .header__cancel-button:hover svg {
+    width: 12px;
+    height: 12px;
+    stroke: blue;
 }
 
 .header .header__search-icon {
     width: 20px;
     height: 22px;
+    margin: 0 10px;
 }
-
 
 /*main */
 .body__main {
@@ -266,24 +310,24 @@
 
 .data-table .data-table__header-row th {
     text-align: left;
-    padding: 25px 10px;
+    padding: 15px 10px;
     line-height: 20px;
     text-transform: uppercase;
     color: var(--table-title-color);
 }
 
 .data-table .data-table__body-row td {
-    padding: 15px;
+    padding: 25px 15px;
     line-height: 20px;
     color: var(--table-text-color);
 }
 
-.data-table .data-table__body-row td:last-child {
-    text-align: end;
+.data-table .data-table__body-row td:first-child {
+    font-weight: 600;
 }
 
-.data-table__body-row:nth-child(2n + 2) {
-    background-color: var(--table-row-accent-color);
+.data-table .data-table__body-row td:last-child {
+    text-align: end;
 }
 
 .data-table .data-table__body-row:hover {
@@ -295,7 +339,7 @@
 }
 
 .data-table .data-table__header-row {
-    border-bottom: 3px solid var(--table-border-color);
+    border-bottom: 3px solid var(--table-title-border-color);
 }
 
 .data-table .data-table__body-row {
@@ -321,6 +365,7 @@
 
 .remove-data-button__icon {
     display: block;
+    stroke: #ffffff;
 }
 
 
@@ -569,7 +614,6 @@ input[type=number] {
     border: 2px solid #000000;
     width: 90%;
     box-sizing: border-box;
-    height: 72px;
 }
 
 .data-table__textarea:focus {

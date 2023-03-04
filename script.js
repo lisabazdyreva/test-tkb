@@ -9,6 +9,13 @@ const removeButtons = document.querySelectorAll('.remove-data-button');
 const postDataButton = document.querySelector('.action-button--post');
 
 
+const JOB_TITLE = {
+  manager: 'менеджер',
+  analyst: 'аналитик',
+  programmer: 'программист',
+  lawyer: 'юрист',
+};
+
 const validity = {
   isNameValid: false,
   isJobTitleValid: false,
@@ -99,7 +106,7 @@ const removeRowButton =
 //4. По кнопке добавить строку в таблицу
 newRow.querySelector('.save-data-button').addEventListener('click', () => {
   const name = newRow.querySelector('#name').value;
-  // const jobTitle = newRow
+  const jobTitle = newRow.querySelector('#job-title').value;
   const age = newRow.querySelector('#age').value;
   const competencies = newRow.querySelector('#competencies').value;
 
@@ -107,7 +114,7 @@ newRow.querySelector('.save-data-button').addEventListener('click', () => {
   tdName.textContent = name;
 
   const tdJobTitle = document.createElement('td');
-  tdJobTitle.textContent = 'Аналитик';
+  tdJobTitle.textContent = JOB_TITLE[jobTitle];
 
   const tdAge = document.createElement('td');
   tdAge.textContent = age;
@@ -173,7 +180,6 @@ postDataButton.addEventListener('click', () => {
   });
 
   const jsonData = JSON.stringify(dataObject);
-
   console.log(jsonData);
 });
 
