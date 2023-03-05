@@ -1,4 +1,6 @@
-
+//TODO при добавлении нового перемещать бы к концу таблицы и закрывать меню
+// todo обрезка символов
+// todo safari no outline on links and small font
 const dataTable = document.querySelector('.data-table').querySelector('tbody');
 
 const addDataButton = document.querySelector('.action-button--add');
@@ -163,6 +165,19 @@ removeButtons.forEach((removeButton) => {
 
 //5. Отправить джейсон с полями
 
+
+const makeRequest = (json) => {
+  fetch('index.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: json,
+  }).then((response) => response.json())
+    .then(({result}) => console.log(result))
+    .catch((err) => console.log(err));
+};
+
 postDataButton.addEventListener('click', () => {
   const rows = dataTable.querySelectorAll('tr');
 
@@ -180,7 +195,7 @@ postDataButton.addEventListener('click', () => {
   });
 
   const jsonData = JSON.stringify(dataObject);
-  console.log(jsonData);
+  makeRequest(jsonData);
 });
 
 

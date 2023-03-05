@@ -84,7 +84,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    height: 100%;
     font-family: "Nunito Sans", "Arial", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -97,11 +96,13 @@
 
 .body {
     display: grid;
-    height: 100%;
+    height: 100vh;
+
+    overflow-y: hidden;
 }
 
 .body--nav-open {
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 1fr 3.5fr;
 }
 
 /*
@@ -147,9 +148,8 @@
 
 .content-wrapper {
     display: grid;
-    grid-template-rows: min-content 1fr min-content;
-    align-items: start;
-    min-height: 100%;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
 }
 
 
@@ -294,18 +294,28 @@
     margin-right: 50px;
 }
 
-.main {
+/*.main {*/
     /*background-color: aquamarine;*/
-}
+/*}*/
 
 
 /*
     data table
 */
 
+
+
 .data-table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
+}
+
+.data-table tbody {
+    display: block;
+    width: 100%;
+    max-height: calc(100vh - 84px - 24px - 58px - 53px - 10px); /*поправить*/
+    overflow: auto;
 }
 
 .data-table .data-table__header-row th {
@@ -339,6 +349,7 @@
 }
 
 .data-table .data-table__header-row {
+    display: block;
     border-bottom: 3px solid var(--table-title-border-color);
 }
 
@@ -518,20 +529,34 @@
 
 
 @media screen and (min-width: 769px) {
-    .data-table .data-table__header-row .name-cell {
+    .data-table .name-cell {
         width: 400px;
+        box-sizing: border-box;
     }
 
-    .data-table .data-table__header-row .job-title-cell {
+    .data-table .job-title-cell {
         width: 200px;
+        box-sizing: border-box;
     }
 
-    .data-table .data-table__header-row .age-cell {
+    .data-table .age-cell {
         width: 100px;
+        box-sizing: border-box;
     }
 
-    .data-table .data-table__header-row .button-cell {
+    .data-table .skills-cell {
+        max-width: 80%;
+        /*width: 100%;*/
+        box-sizing: border-box;
+    }
+
+    .data-table .button-cell {
         width: 50px;
+        box-sizing: border-box;
+    }
+
+    .data-table .data-table__body-row--new .button-cell {
+        width: 120px;
     }
 }
 
