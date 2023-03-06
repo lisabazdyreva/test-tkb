@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="public/css/styles.css">
   <link rel="stylesheet" href="public/css/styles.css">
-  <script defer src="script.js"></script>
+  <script defer src="src/script.js"></script>
   <title>Test TKB</title>
 </head>
 <body class="page__body body body--nav-open">
@@ -72,6 +72,8 @@
           <input class="header__search-input" type="text" placeholder="Поиск" autocomplete="off"/>
         </label>
 
+        <ul class="header__search-list"></ul>
+
         <button class="header__cancel-button" type="button">
           <svg width="10" height="10" stroke="black">
             <use xlink:href="#menu-icon--close"></use>
@@ -90,7 +92,7 @@
               <th class="name-cell">ФИО</th>
               <th class="job-title-cell">Должность</th>
               <th class="age-cell">Возраст</th>
-              <th>Компетенции</th>
+              <th class="skills-cell">Компетенции</th>
               <th class="button-cell"></th>
             </tr>
           </thead>
@@ -99,9 +101,8 @@
               <td class="name-cell">Иванов Иван Иванович</td>
               <td class="job-title-cell">аналитик</td>
               <td class="age-cell">35</td>
-              <td>
-                Сбор и анализ данных, включая работу с большими объемами информации,
-                оценка эффективности бизнес-процессов и рекомендации по их улучшению.
+              <td class="skills-cell">
+                <p class="description">Сбор и анализ данных, включая работу с большими объемами информации, оценка эффективности бизнес-процессов и рекомендации по их улучшению.</p>
               </td>
               <td class="button-cell">
                 <button class="remove-data-button" type="button" title="Удалить">
@@ -113,17 +114,17 @@
               </td>
             </tr>
             <tr class="data-table__body-row" id="1-row">
-              <td>Александр Николаевич Кузнецов</td>
-              <td>менеджер</td>
-              <td>19</td>
-              <td>Планирование проектов и определение целей и этапов проекта,
-                управление ресурсами проекта, включая бюджет, график и кадры,
-                руководство командой проекта, включая делегирование задач и управление конфликтами,
-                коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами
-                умение анализировать риски и принимать меры для их управления,
-                оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании
+              <td class="name-cell">Александр Николаевич Кузнецов</td>
+              <td class="job-title-cell">менеджер</td>
+              <td class="age-cell">19</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график и кадры</span>
+                  <span class="description-long">, руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
               </td>
-              <td>
+              <td class="button-cell">
                 <button class="remove-data-button" type="button" title="Удалить">
                   <span class="visually-hidden">Удалить сотрудника</span>
                   <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
@@ -133,19 +134,17 @@
               </td>
             </tr>
             <tr class="data-table__body-row" id="2-row">
-              <td>Николай Игоревич Смирнов</td>
-              <td>программист</td>
-              <td>21</td>
-              <td>
-                Знание языков программирования, таких как Java, Python, C++, JavaScript и других,
-                умение разрабатывать и отлаживать программный код для различных платформ, включая мобильные устройства, настольные компьютеры и серверы,
-                знание алгоритмов и структур данных для эффективной работы с большими объемами информации,
-                умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки,
-                коммуникационные навыки для общения с заказчиками и командой разработчиков,
-                умение тестировать и отлаживать программное обеспечение,
-                знание принципов работы баз данных и навыки работы с SQL.
+              <td class="name-cell">Николай Игоревич Смирнов</td>
+              <td class="job-title-cell">программист</td>
+              <td class="age-cell">21</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
+                  <span class="description-long">раммный код для различных платформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение,знание принципов работы баз данных и навыки работы с SQL.</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
               </td>
-              <td>
+              <td class="button-cell">
                 <button class="remove-data-button" type="button" title="Удалить">
                   <span class="visually-hidden">Удалить сотрудника</span>
                   <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
@@ -155,15 +154,17 @@
               </td>
             </tr>
             <tr class="data-table__body-row" id="3-row">
-              <td>Василий Валентинович Шпак</td>
-              <td>юрист</td>
-              <td>48</td>
-              <td>
-                Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы,
-                навыки юридического исследования и анализа, умение составлять и анализировать юридические документы,
-                коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде
+              <td class="name-cell">Василий Валентинович Шпак</td>
+              <td class="job-title-cell">юрист</td>
+              <td class="age-cell">48</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навыки юридического иссл</span>
+                  <span class="description-long">едования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
               </td>
-              <td>
+              <td class="button-cell">
                 <button class="remove-data-button" type="button" title="Удалить">
                   <span class="visually-hidden">Удалить сотрудника</span>
                   <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
@@ -173,19 +174,226 @@
               </td>
             </tr>
             <tr class="data-table__body-row" id="4-row">
-              <td>Тимур Зарипов</td>
-              <td>аналитик</td>
-              <td>27</td>
-              <td>
-                Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов,
-                работа с бизнес-моделями и понимание требований клиентов и рынка,
-                умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие,
-                умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа,
-                разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов,
-                работа с базами данных и знание языков запросов, таких как SQL,
-                коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.
+              <td class="name-cell">Тимур Зарипов</td>
+              <td class="job-title-cell">аналитик</td>
+              <td class="age-cell">27</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
+                  <span class="description-long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
               </td>
-              <td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+<!--          -->
+            <tr class="data-table__body-row" id="5-row">
+              <td class="name-cell">Иванов Иван Иванович</td>
+              <td class="job-title-cell">аналитик</td>
+              <td class="age-cell">35</td>
+              <td class="skills-cell">
+                <p class="description">Сбор и анализ данных, включая работу с большими объемами информации, оценка эффективности бизнес-процессов и рекомендации по их улучшению.</p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="6-row">
+              <td class="name-cell">Александр Николаевич Кузнецов</td>
+              <td class="job-title-cell">менеджер</td>
+              <td class="age-cell">19</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график и кадры</span>
+                  <span class="description-long"> , руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="7-row">
+              <td class="name-cell">Николай Игоревич Смирнов</td>
+              <td class="job-title-cell">программист</td>
+              <td class="age-cell">21</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
+                  <span class="description-long">раммный код для различных платформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение, знание принципов работы баз данных и навыки работы с SQL.</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="8-row">
+              <td class="name-cell">Василий Валентинович Шпак</td>
+              <td class="job-title-cell">юрист</td>
+              <td class="age-cell">48</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навыки юридического иссл</span>
+                  <span class="description-long">едования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="9-row">
+              <td class="name-cell">Тимур Зарипов</td>
+              <td class="job-title-cell">аналитик</td>
+              <td class="age-cell">27</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
+                  <span class="description-long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="10-row">
+              <td class="name-cell">Иванов Иван Иванович</td>
+              <td class="job-title-cell">аналитик</td>
+              <td class="age-cell">35</td>
+              <td class="skills-cell">
+                <p class="description">Сбор и анализ данных, включая работу с большими объемами информации, оценка эффективности бизнес-процессов и рекомендации по их улучшению.</p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="11-row">
+              <td class="name-cell">Александр Николаевич Кузнецов</td>
+              <td class="job-title-cell">менеджер</td>
+              <td class="age-cell">19</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график, кадры,</span>
+                  <span class="description-long"> руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="12-row">
+              <td class="name-cell">Николай Игоревич Смирнов</td>
+              <td class="job-title-cell">программист</td>
+              <td class="age-cell">21</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
+                  <span class="description-long">раммный код для различныхплатформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение, знание принципов работы баз данных и навыки работы с SQL.</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="13-row">
+              <td class="name-cell">Василий Валентинович Шпак</td>
+              <td class="job-title-cell">юрист</td>
+              <td class="age-cell">48</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навык и юридического исс</span>
+                  <span class="description-long">ледования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="14-row">
+              <td class="name-cell">Тимур Зарипов</td>
+              <td class="job-title-cell">аналитик</td>
+              <td class="age-cell">27</td>
+              <td class="skills-cell">
+                <p class="description description-long--close">
+                  <span class="description-short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
+                  <span class="description-long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
+                  <button class="description--toggle-button" type="button">--></button>
+                </p>
+              </td>
+              <td class="button-cell">
+                <button class="remove-data-button" type="button" title="Удалить">
+                  <span class="visually-hidden">Удалить сотрудника</span>
+                  <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
+                    <use xlink:href="#remove-icon"></use>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__body-row" id="15-row">
+              <td class="name-cell">Иванов Иван Иванович</td>
+              <td class="job-title-cell">аналитик</td>
+              <td class="age-cell">35</td>
+              <td class="skills-cell">
+                <p class="description">Сбор и анализ данных, включая работу с большими объемами информации, оценка эффективности бизнес-процессов и рекомендации по их улучшению.</p>
+              </td>
+              <td class="button-cell">
                 <button class="remove-data-button" type="button" title="Удалить">
                   <span class="visually-hidden">Удалить сотрудника</span>
                   <svg class="remove-data-button__icon" width="10" height="10" aria-hidden="true">
@@ -200,6 +408,7 @@
       <div class="action-buttons main_content__action-buttons">
         <button class="action-button action-button--post" type="button">Отправить</button>
         <button class="action-button action-button--add" type="button">Добавить</button>
+        <button class="action-button action-button--cancel" type="button">Отменить</button>
       </div>
     </main>
 
@@ -239,6 +448,22 @@
     </tr>
   </template>
 
-
+<template id="search-items">
+  <li class="header__search-item">
+    <a class="header__search-link" href="#">Искомый 1</a>
+  </li>
+  <li class="header__search-item">
+    <a class="header__search-link" href="#">Искомый 2</a>
+  </li>
+  <li class="header__search-item">
+    <a class="header__search-link" href="#">Искомый 3</a>
+  </li>
+  <li class="header__search-item">
+    <a class="header__search-link" href="#">Искомый 4</a>
+  </li>
+  <li class="header__search-item">
+    <a class="header__search-link" href="#">Искомый 5</a>
+  </li>
+</template>
 </body>
 </html>

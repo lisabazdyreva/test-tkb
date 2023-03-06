@@ -1,6 +1,4 @@
-/*TODO подключить нормалайз*/
-/*TODO таблица на переполнение*/
-/*компетенции равны скилам?*/
+/* todo компетенции равны скилам?*/
 :root {
 
     --disabled-text-color: #EDEDED;
@@ -530,12 +528,12 @@
 
 @media screen and (min-width: 769px) {
     .data-table .name-cell {
-        width: 400px;
+        width: 350px;
         box-sizing: border-box;
     }
 
     .data-table .job-title-cell {
-        width: 200px;
+        width: 160px;
         box-sizing: border-box;
     }
 
@@ -661,4 +659,67 @@ input[type=number] {
     background-color: var(--disabled-bg-color);
     color: var(--disabled-text-color);
     cursor: default;
+}
+
+.data-table__body-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.description {
+    margin: 0;
+}
+.description-long--close .description-long {
+    display: none;
+}
+
+
+.description .description-short:after {
+    content: '\200B';
+}
+
+.description-long--close .description-short:after {
+    content: "...";
+}
+
+.skills-cell {
+    width: calc(100% - 700px);
+}
+
+
+.header__search-list {
+    margin: 0;
+    width: 100%;
+    max-width: 800px;
+    list-style: none;
+    top: 45px;
+    position: absolute;
+    background-color: #152238;
+    border-radius: 10px;
+    padding: 0;
+}
+
+
+.header__search-item {
+    border-bottom: 1px solid #ffffff;
+}
+
+.header__search-item:last-child {
+    border-bottom: none;
+}
+
+.header__search-link {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px;
+}
+
+.header__search-link:hover {
+    font-weight: 600;
+}
+
+
+.action-button--cancel {
+    display: none;
 }
