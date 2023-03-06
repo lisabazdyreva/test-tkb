@@ -32,6 +32,16 @@
       <symbol id="icon-search" viewBox="0 0 20 21">
         <path  fill-rule="evenodd" d="m13.604 12.916 4.483 4.483a.84.84 0 1 1-1.189 1.189l-4.483-4.484a6.667 6.667 0 1 1 1.188-1.188h.001Zm-5.27.917a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" clip-rule="evenodd"/>
       </symbol>
+
+      <symbol id="expand-icon" viewBox="0 0 11 15">
+          <path d="M1 1L5 7.29032L1 14" stroke-linecap="round"/>
+          <path d="M6 1L10 7.29032L6 14" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="save-icon" viewBox="0 0 10 7" fill="none">
+        <line x1="0.5" y1="-0.5" x2="4.12385" y2="-0.5" transform="matrix(0.76095 0.64881 -0.724999 0.68875 0 4)" stroke-linecap="round"/>
+        <line x1="0.5" y1="-0.5" x2="8.3323" y2="-0.5" transform="matrix(0.733838 -0.679324 0.621658 0.783289 3.51855 7)" stroke-linecap="round"/>
+      </symbol>
     </svg>
   </div>
 
@@ -56,10 +66,10 @@
 
   <div class="content-wrapper">
     <header class="header body__header">
-      <button type="button" class="header__menu-button">
+      <button type="button" class="menu-button">
         <svg width="30" height="24" aria-hidden="true">
-          <use class="menu-icon--close" xlink:href="#menu-icon--close"></use>
-          <use class="menu-icon" xlink:href="#menu-icon"></use>
+          <use class="menu-button__menu-icon--close" xlink:href="#menu-icon--close"></use>
+          <use class="menu-button__menu-icon" xlink:href="#menu-icon"></use>
         </svg>
         Меню
       </button>
@@ -74,7 +84,7 @@
 
         <ul class="header__search-list"></ul>
 
-        <button class="header__cancel-button" type="button">
+        <button class="header__search-button" type="button">
           <svg width="10" height="10" stroke="black">
             <use xlink:href="#menu-icon--close"></use>
           </svg>
@@ -86,7 +96,7 @@
       <h2 class="visually-hidden">Таблица с данными</h2>
 
       <div class="data-table-wrapper">
-        <table class="data-table main-content__data-table">
+        <table class="data-table">
           <thead>
             <tr class="data-table__header-row">
               <th class="name-cell">ФИО</th>
@@ -118,10 +128,14 @@
               <td class="job-title-cell">менеджер</td>
               <td class="age-cell">19</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график и кадры</span>
-                  <span class="description-long">, руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график и кадры</span>
+                  <span class="description__long">, руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
+                  <button class="description__toggle-button" type="button">
+                    <svg class="description__toggle-icon" width="11" height="15"  aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -138,10 +152,15 @@
               <td class="job-title-cell">программист</td>
               <td class="age-cell">21</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
-                  <span class="description-long">раммный код для различных платформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение,знание принципов работы баз данных и навыки работы с SQL.</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
+                  <span class="description__long">раммный код для различных платформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение,знание принципов работы баз данных и навыки работы с SQL.</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -158,10 +177,15 @@
               <td class="job-title-cell">юрист</td>
               <td class="age-cell">48</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навыки юридического иссл</span>
-                  <span class="description-long">едования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навыки юридического иссл</span>
+                  <span class="description__long">едования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -178,10 +202,15 @@
               <td class="job-title-cell">аналитик</td>
               <td class="age-cell">27</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
-                  <span class="description-long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
+                  <span class="description__long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -215,10 +244,15 @@
               <td class="job-title-cell">менеджер</td>
               <td class="age-cell">19</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график и кадры</span>
-                  <span class="description-long"> , руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график и кадры</span>
+                  <span class="description__long"> , руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -235,10 +269,15 @@
               <td class="job-title-cell">программист</td>
               <td class="age-cell">21</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
-                  <span class="description-long">раммный код для различных платформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение, знание принципов работы баз данных и навыки работы с SQL.</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
+                  <span class="description__long">раммный код для различных платформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение, знание принципов работы баз данных и навыки работы с SQL.</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -255,10 +294,15 @@
               <td class="job-title-cell">юрист</td>
               <td class="age-cell">48</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навыки юридического иссл</span>
-                  <span class="description-long">едования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навыки юридического иссл</span>
+                  <span class="description__long">едования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -275,10 +319,15 @@
               <td class="job-title-cell">аналитик</td>
               <td class="age-cell">27</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
-                  <span class="description-long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
+                  <span class="description__long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -311,10 +360,15 @@
               <td class="job-title-cell">менеджер</td>
               <td class="age-cell">19</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график, кадры,</span>
-                  <span class="description-long"> руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Планирование проектов и определение целей и этапов проекта, управление ресурсами проекта, включая бюджет, график, кадры,</span>
+                  <span class="description__long"> руководство командой проекта, включая делегирование задач и управление конфликтами, коммуникационные навыки для общения с заказчиком, командой проекта и заинтересованными сторонами умение анализировать риски и принимать меры для их управления, оценка качества работы проекта и обеспечение соответствия результатов требованиям заказчика и стандартам компании</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -331,10 +385,15 @@
               <td class="job-title-cell">программист</td>
               <td class="age-cell">21</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
-                  <span class="description-long">раммный код для различныхплатформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение, знание принципов работы баз данных и навыки работы с SQL.</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Знание языков программирования, таких как Java, Python, C++, JavaScript и других, умение разрабатывать и отлаживать прог</span>
+                  <span class="description__long">раммный код для различныхплатформ, включая мобильные устройства, настольные компьютеры и серверы, знание алгоритмов и структур данных для эффективной работы с большими объемами информации, умение использовать инструменты разработки программного обеспечения, такие как среды разработки, системы контроля версий и интегрированные среды разработки, коммуникационные навыки для общения с заказчиками и командой разработчиков, умение тестировать и отлаживать программное обеспечение, знание принципов работы баз данных и навыки работы с SQL.</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -351,10 +410,15 @@
               <td class="job-title-cell">юрист</td>
               <td class="age-cell">48</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навык и юридического исс</span>
-                  <span class="description-long">ледования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Знание законов и нормативных актов, умение анализировать и интерпретировать правовые документы, навык и юридического исс</span>
+                  <span class="description__long">ледования и анализа, умение составлять и анализировать юридические документы, коммуникационные навыки для ведения переговоров, консультаций и представления интересов клиента в суде</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -371,10 +435,15 @@
               <td class="job-title-cell">аналитик</td>
               <td class="age-cell">27</td>
               <td class="skills-cell">
-                <p class="description description-long--close">
-                  <span class="description-short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
-                  <span class="description-long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
-                  <button class="description--toggle-button" type="button">--></button>
+                <p class="description description__long--close">
+                  <span class="description__short">Умение прогнозировать результаты бизнес-операций и разрабатывать стратегии для улучшения результатов, работа с бизнес-мо</span>
+                  <span class="description__long">делями и понимание требований клиентов и рынка, умение использовать современные инструменты анализа данных, такие как Excel, Power BI, Tableau и другие, умение создавать отчеты и дашборды для визуализации данных и общения результатов анализа, разработка и реализация проектов, связанных с анализом данных и улучшением бизнес-процессов, работа с базами данных и знание языков запросов, таких как SQL, коммуникационные навыки для общения с заинтересованными сторонами, включая руководство, коллег и клиентов.</span>
+                  <button class="description__toggle-button" type="button">
+                    <span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description__toggle-icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>
+                  </button>
                 </p>
               </td>
               <td class="button-cell">
@@ -428,10 +497,10 @@
         <label class="visually-hidden" for="job-title">Название должность</label>
         <select class="data-table__select" name="job-title" id="job-title" required>
           <option class="data-table__option" value="">--Должность--</option>
-          <option class="data-table__option" value="analyst">аналитик</option>
-          <option class="data-table__option" value="manager">менеджер</option>
-          <option class="data-table__option" value="programmer">программист</option>
-          <option class="data-table__option" value="lawyer">юрист</option>
+          <option class="data-table__option" value="analyst">Аналитик</option>
+          <option class="data-table__option" value="manager">Менеджер</option>
+          <option class="data-table__option" value="programmer">Программист</option>
+          <option class="data-table__option" value="lawyer">Юрист</option>
         </select>
       </td>
       <td class="age-cell">
@@ -439,11 +508,16 @@
         <input class="data-table__input data-table__input--small" type="number" placeholder="Число" id="age" required>
       </td>
       <td class="skills-cell">
-        <label class="visually-hidden" for="competencies">Задачи, компетенции</label>
-        <textarea class="data-table__textarea" id="competencies" required></textarea>
+        <label class="visually-hidden" for="skills">Задачи, компетенции</label>
+        <textarea class="data-table__textarea" id="skills" required></textarea>
       </td>
       <td class="button-cell">
-        <button class="save-data-button" type="button">Сохранить</button>
+        <button class="save-data-button" type="button">
+          <span>Сохранить</span>
+          <svg class="save-data-button--icon" width="10" height="7" aria-hidden="true" stroke="black">
+            <use xlink:href="#save-icon"></use>
+          </svg>
+        </button>
       </td>
     </tr>
   </template>

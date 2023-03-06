@@ -1,8 +1,3 @@
-// todo переименовать
-// todo safari no outline on links and small font
-// todo адаптация на мобилке
-// todo добавить красивую иконку для разворота текста
-
 const SKILLS_DESCRIPTION_LIMIT = {
   Min: 120,
   Max: 200,
@@ -23,25 +18,25 @@ const cancelCreateDataButton =  document.querySelector('.action-button--cancel')
 
 const newRow = document.querySelector('#new-row').content.querySelector('.data-table__body-row');
 const removeRowButtons = document.querySelectorAll('.remove-data-button');
-const toggleDescriptionButtons = document.querySelectorAll('.description--toggle-button');
+const toggleDescriptionButtons = document.querySelectorAll('.description__toggle-button');
 
 let isMenuOpen = true;
 
-const menuShowButton = document.querySelector('.header__menu-button');
+const menuShowButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.main-nav');
 
 const searchInput = document.querySelector('.header__search-input');
 const searchList = document.querySelector('.header__search-list');
 const searchItems = document.querySelector('#search-items').content.querySelectorAll('.header__search-item');
-const searchCancelButton = document.querySelector('.header__cancel-button');
+const searchCancelButton = document.querySelector('.header__search-button');
 
 
 const validity = {
   isNameValid: false,
   isJobTitleValid: false,
   isAgeValid: false,
-  isCompetenciesValid: false,
-}; // todo для чего?
+  isSkillsValid: false,
+};
 
 const removeRowButton =
   `<button class="remove-data-button" type="button" title="Удалить">
@@ -62,50 +57,55 @@ const cleanRowInputs = () => {
   newRow.querySelector('#name').value = '';
   newRow.querySelector('#job-title').value = '';
   newRow.querySelector('#age').value = '';
-  newRow.querySelector('#competencies').value = '';
+  newRow.querySelector('#skills').value = '';
+};
+
+const clearValidity = () => {
+  for (let isValid in validity) {
+    validity[isValid] = false;
+  }
+  console.log(validity)
 };
 
 
-//2. Валидировать ввод
+const unlockButton = () => {
+  newRow.querySelector('.save-data-button').disabled = !(validity.isNameValid && validity.isAgeValid && validity.isSkillsValid && validity.isJobTitleValid);
+};
+
+// Валидировать ввод
 
 // имя
 newRow.querySelector('#name').addEventListener('input', (evt) => {
-    if (evt.target.value.trim()) {
-      validity.isNameValid = true;
-    }
-
-  if (validity.isNameValid && validity.isAgeValid  && validity.isCompetenciesValid) {
-    newRow.querySelector('.save-data-button').disabled = false;
-  }
+  validity.isNameValid = Boolean(evt.target.value.trim().length);
+  unlockButton();
 });
 
+// должность
+newRow.querySelector('#job-title').addEventListener('change', (evt) => {
+  if (evt.target.value !== '') {
+    validity.isJobTitleValid = evt.target.value !== '';
+  }
+  unlockButton();
+});
 
 // возраст
 newRow.querySelector('#age').addEventListener('input', (evt) => {
-  if (Number(evt.target.value)) {
-    validity.isAgeValid = true;
-  }
-
-  if (validity.isNameValid && validity.isAgeValid  && validity.isCompetenciesValid) {
-    newRow.querySelector('.save-data-button').disabled = false;
-  }
+  validity.isAgeValid = Boolean(Number(evt.target.value));
+  unlockButton();
 });
 
 // компетенции
-newRow.querySelector('#competencies').addEventListener('input', (evt) => {
-  if (evt.target.value.trim()) {
-    validity.isCompetenciesValid = true;
-  }
-
-  if (validity.isNameValid && validity.isAgeValid  && validity.isCompetenciesValid) {
-    newRow.querySelector('.save-data-button').disabled = false;
-  }
+newRow.querySelector('#skills').addEventListener('input', (evt) => {
+  validity.isSkillsValid = Boolean(evt.target.value.trim().length);
+  unlockButton();
 });
 
 // Отмена добавления строки
 const onClickCancelCreateDataButtonHandler = () => {
   cleanRowInputs();
+  clearValidity();
   newRow.remove();
+
 
   createDataButton.disabled = false;
   postDataButton.disabled = false;
@@ -142,7 +142,7 @@ createDataButton.addEventListener('click', onClickCreateDataButtonHandler);
 
 
 const createSkillTd = (parent) => {
-  const competencies = newRow.querySelector('#competencies').value;
+  const competencies = newRow.querySelector('#skills').value;
 
   const p = document.createElement('p');
   p.classList.add('description');
@@ -161,21 +161,25 @@ const createSkillTd = (parent) => {
     spanLong.classList.add('description-long');
     spanLong.innerText = competencies.slice(SKILLS_DESCRIPTION_LIMIT.Min);
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.classList.add('description--toggle-button');
-    button.innerText = '-->';
+    const toggleButton = document.createElement('button');
+    toggleButton.type = 'button';
+    toggleButton.classList.add('description-toggle-button');
 
-    button.addEventListener('click', onToggleButtonDescriptionHandler);
+    toggleButton.innerHTML = `<span class="visually-hidden">Открыть полное описание</span>
+                    <svg class="description-toggle-button__icon" width="11" height="15" aria-hidden="true" stroke="black" fill="none">
+                      <use xlink:href="#expand-icon"></use>
+                    </svg>`;
+
+    toggleButton.addEventListener('click', onToggleButtonDescriptionHandler);
 
     p.append(spanShort);
     p.append(spanLong);
-    p.append(button);
+    p.append(toggleButton);
   }
   parent.append(p);
 
 };
-
+// сохранить поле
 const onClickSaveDaraButtonHandler = () => {
   const name = newRow.querySelector('#name').value;
   const jobTitle = newRow.querySelector('#job-title').value;
@@ -199,6 +203,7 @@ const onClickSaveDaraButtonHandler = () => {
   tdSkills.classList.add('skills-cell');
 
   cleanRowInputs();
+  clearValidity();
   newRow.remove();
 
   const tdRemoveButton = document.createElement('td');
@@ -231,7 +236,6 @@ newRow.querySelector('.save-data-button').addEventListener('click', onClickSaveD
 
 
 //Удалить строку
-
 const removeButtonHandler = (evt) => {
   const rowToRemove = evt.currentTarget.parentNode.parentNode;
 
@@ -245,18 +249,17 @@ removeRowButtons.forEach((removeButton) => {
 
 
 // Отправить json с полями
-
-  // const makeRequest = (json) => {
-  //   fetch('index.php', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: json,
-  //   }).then((response) => response.json())
-  //     .then(({result}) => console.log(result))
-  //     .catch((err) => console.log(err));
-  // };
+  const makeRequest = (json) => {
+    fetch('data.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json,
+    }).then((response) => response.json())
+      .then(({result}) => console.log(result))
+      .catch((err) => console.log(err));
+  };
 
 //Собрать json
 const onClickPostDataButtonHandler = () => {
@@ -272,10 +275,10 @@ const onClickPostDataButtonHandler = () => {
     dataRow['age'] = Number(row.children[2].innerText);
 
     if (row.children[3].children[0].children.length) {
-      dataRow['competencies'] = `${row.children[3].children[0].children[0].innerText}${row.children[3].children[0].children[1].innerText}`;
+      dataRow['skills'] = `${row.children[3].children[0].children[0].innerText}${row.children[3].children[0].children[1].innerText}`;
 
     } else {
-      dataRow['competencies'] = row.children[3].children[0].innerText;
+      dataRow['skills'] = row.children[3].children[0].innerText;
     }
 
     dataObject[parseInt(row.id)] = dataRow;
@@ -283,7 +286,7 @@ const onClickPostDataButtonHandler = () => {
 
   const jsonData = JSON.stringify(dataObject);
   console.log(jsonData)
-  // makeRequest(jsonData);
+  makeRequest(jsonData);
 };
 
 postDataButton.addEventListener('click', onClickPostDataButtonHandler);
@@ -312,6 +315,15 @@ const onInputSearchHandler = (evt) => {
   } else {
     searchList.innerHTML = "";
   }
+
+  const onPressEscapeHandler = (evt) => {
+    if (evt.code === 'Escape' || evt.code === 'Esc') {
+      searchInput.value = '';
+      searchList.innerHTML = "";
+    }
+    window.removeEventListener('keydown', onPressEscapeHandler);
+  };
+  window.addEventListener('keydown', onPressEscapeHandler);
 };
 searchInput.addEventListener('input', onInputSearchHandler);
 
@@ -326,7 +338,7 @@ searchCancelButton.addEventListener('click', onClickSearchCancelButtonHandler );
 
 // обрезать длинный текст в компетенциях
 const onToggleButtonDescriptionHandler = (evt) => {
-  evt.currentTarget.parentNode.classList.toggle('description-long--close');
+  evt.currentTarget.parentNode.classList.toggle('description__long--close');
 };
 toggleDescriptionButtons.forEach((button) => {
   button.addEventListener('click', onToggleButtonDescriptionHandler);
