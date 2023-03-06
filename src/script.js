@@ -250,7 +250,7 @@ removeRowButtons.forEach((removeButton) => {
 
 // Отправить json с полями
   const makeRequest = (json) => {
-    fetch('data.php', {
+    fetch('https://demo-task.infinityfreeapp.com/data.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
